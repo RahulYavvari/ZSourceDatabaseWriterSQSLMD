@@ -2,7 +2,7 @@ import loadDatabase from "./utils/databaseController.mjs";
 
 export const handler = async (event) => {
     const records = event.Records;
-    const response = null;
+    let response = null;
     for(let i = 0; i < records.length; i++) {
         const message = records[i].body;
 
