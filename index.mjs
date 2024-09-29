@@ -4,7 +4,7 @@ export const handler = async (event) => {
     const records = event.Records;
     let response = null;
     for(let i = 0; i < records.length; i++) {
-        const message = records[i].body;
+        const message = records[i];
 
         try {
             const databaseResponse = await loadDatabase(message);
@@ -24,3 +24,22 @@ export const handler = async (event) => {
 
     return response;
 };
+
+// [THE BELOW CODE IS FOR TESTING DURING DEVELOPMENT]
+// const event = {
+//     "Records": [
+//       {
+//         "tag": "",
+//         "edited": false,
+//         "value": "",
+//         "dateAndTime": "",
+//         "userid": ""
+//       }
+//     ]
+// };  
+
+// const main = async () => {
+//     await handler(event);  
+// };
+
+// main();
