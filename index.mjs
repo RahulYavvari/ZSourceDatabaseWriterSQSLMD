@@ -6,8 +6,9 @@ export const handler = async (event) => {
     for(let i = 0; i < records.length; i++) {
         const message = records[i];
         try {
+            console.log("[WATCH LOG 1]:", message);
             const databaseResponse = await loadDatabase(message);
-            console.log("[WATCH LOG]:", databaseResponse);
+            console.log("[WATCH LOG 2]:", databaseResponse);
             if(databaseResponse != null || databaseResponse != undefined) {
                 console.log("[LOG] Successfully uploaded into database!");
             }
