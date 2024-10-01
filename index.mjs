@@ -5,10 +5,12 @@ export const handler = async (event) => {
     let response = null;
     for(let i = 0; i < records.length; i++) {
         const message = records[i];
-
         try {
             const databaseResponse = await loadDatabase(message);
-            console.log("[LOG] Successfully uploaded into database!");
+            console.log("[WATCH LOG]:", databaseResponse);
+            if(databaseResponse != null || databaseResponse != undefined) {
+                console.log("[LOG] Successfully uploaded into database!");
+            }
             response = {
                 statusCode: 200,
                 body: `Successfully uploaded into database! \n [RESPONSE] \n ${databaseResponse}`
@@ -26,20 +28,20 @@ export const handler = async (event) => {
 };
 
 // [THE BELOW CODE IS FOR TESTING DURING DEVELOPMENT]
-// const event = {
-//     "Records": [
-//       {
-//         "tag": "",
-//         "edited": false,
-//         "value": "",
-//         "dateAndTime": "",
-//         "userid": ""
-//       }
-//     ]
-// };  
+const event = {
+    "Records": [
+      {
+        "tag": "",
+        "edited": false,
+        "value": "",
+        "dateAndTime": "",
+        "userid": ""
+      }
+    ]
+};  
 
-// const main = async () => {
-//     await handler(event);  
-// };
+const main = async () => {
+    await handler(event);  
+};
 
-// main();
+main();
