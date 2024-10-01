@@ -6,7 +6,7 @@ export const handler = async (event) => {
     for(let i = 0; i < records.length; i++) {
         const message = records[i];
         try {
-            console.log("[WATCH LOG 1]:", JSON.parse(message.body));
+            console.log("[WATCH LOG 1]:", JSON.parse(message.body).Records[0]);
             const databaseResponse = await loadDatabase(message);
             console.log("[WATCH LOG 2]:", databaseResponse);
             if(databaseResponse != null || databaseResponse != undefined) {
