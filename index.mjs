@@ -7,7 +7,7 @@ export const handler = async (event) => {
         const message = records[i];
         try {
             console.log("[WATCH LOG 1]:", JSON.parse(message.body).Records[0]);
-            const databaseResponse = await loadDatabase(message);
+            const databaseResponse = await loadDatabase(JSON.parse(message.body).Records[0]);
             console.log("[WATCH LOG 2]:", databaseResponse);
             if(databaseResponse != null || databaseResponse != undefined) {
                 console.log("[LOG] Successfully uploaded into database!");
